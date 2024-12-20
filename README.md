@@ -184,6 +184,3 @@ If you encounter any problems, please open an issue in the project’s GitHub re
 ## Acknowledgments
 - OpenSSL documentation for cryptographic APIs.
 - CMake for simplifying cross-platform builds.
-
-Happy Hashing!
-
