@@ -11,8 +11,8 @@ public:
     int getLockoutDuration() const { return lockoutDuration; } // in seconds
 
 private:
-    std::string usersFilePath = "../data/users.csv";
-    std::string lockoutFilePath = "../data/lockout.csv";
+    std::string usersFilePath = "data/users.csv";
+    std::string lockoutFilePath = "data/lockout.csv";
     int maxAttempts = 3;
     int lockoutDuration = 600; // 10 minutes
 };
