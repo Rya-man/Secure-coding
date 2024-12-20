@@ -84,7 +84,7 @@ make
 Move the generated executable to the root directory for easy access:
 
 ```bash
-mv SecureAuth ../
+mv SecureAuthCPP ../
 ```
 
 5. **Run the Application**
@@ -93,7 +93,7 @@ Go back to the root directory and execute the program:
 
 ```bash
 cd ../
-./SecureAuth
+./SecureAuthCPP
 ```
 
 ---
@@ -126,7 +126,7 @@ Hash: 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd9f144b4e6e284f59c
 SecureAuth/
 ├── CMakeLists.txt       # Build configuration file for CMake
 ├── README.md            # Project documentation
-├── SecureAuth           # Precompiled executable (optional)
+├── SecureAuthCPP          # Precompiled executable (optional)
 ├── src/                 # Source code directory
 │   ├── main.cpp         # Main program entry point
 ├── build/               # Directory for build artifacts
@@ -173,7 +173,7 @@ sudo apt install libssl-dev
 #### Undefined Reference Errors
 Ensure you’re linking OpenSSL libraries when building manually:
 ```bash
-g++ src/main.cpp -o SecureAuth -lssl -lcrypto
+g++ src/main.cpp -o SecureAuth CPP-lssl -lcrypto
 ```
 
 ### Reporting Issues
