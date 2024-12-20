@@ -2,7 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
-#include <sys/stat.h> // for chmod on UNIX systems
+#include <sys/stat.h>
 
 FileManager::FileManager(const std::string &usersPath, const std::string &lockoutPath)
     : usersFilePath(usersPath), lockoutFilePath(lockoutPath) {}

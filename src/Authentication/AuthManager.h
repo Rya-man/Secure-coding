@@ -26,3 +26,4 @@ private:
     void handleFailedAttempt(const std::string &username);
     bool isLockedOut(const std::string &username);
 };
+

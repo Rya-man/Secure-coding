@@ -70,3 +70,4 @@ std::string Hasher::bytesToHex(const unsigned char *bytes, size_t length) {
     }
     return oss.str();
 }
+

@@ -6,31 +6,60 @@
 #include "Utils/Logger.h"
 
 int main() {
-    // Load configuration (paths, lockout durations, etc.)
+    // Load configuration
     Config config;
-    config.loadConfig("config.json"); // Assume config.json or defaults
+    config.loadConfig("config.json");
 
-    // Initialize FileManager and load existing users & lockout data
+    // Initialize FileManager and load user data
     FileManager fileManager(config.getUsersFilePath(), config.getLockoutFilePath());
     std::unordered_map<std::string, User> users;
     std::unordered_map<std::string, UserLockData> lockoutData;
     fileManager.loadUsers(users);
     fileManager.loadLockoutData(lockoutData);
 
-    // Initialize Hasher (for hashing passwords)
+    // Initialize Hasher
     Hasher hasher;
 
-    // Initialize AuthManager with in-memory data
+    // Initialize AuthManager
     AuthManager authManager(fileManager, hasher, config, users, lockoutData);
 
-    std::cout << "Enter Password: ";
-    std::string password;
-    std::getline(std::cin, password);
+    // Main Loop
+    while (true) {
+        std::cout << "1. Register User\n2. Login User\n3. Exit\nChoose an option: ";
+        int choice;
+        std::cin >> choice;
+        std::cin.ignore();
 
-    // Hash the input password as a demonstration
-    std::string hashResult = hasher.hashPassword(hasher.generateSalt(16), password);
+        if (choice == 1) {
+            std::string username, password;
+            std::cout << "Enter Username: ";
+            std::getline(std::cin, username);
+            std::cout << "Enter Password: ";
+            std::getline(std::cin, password);
 
-    std::cout << "Hashed password: " << hashResult << std::endl;
+            if (authManager.createUser(username, password)) {
+                std::cout << "User registered successfully!\n";
+            } else {
+                std::cout << "Failed to register user.\n";
+            }
+        } else if (choice == 2) {
+            std::string username, password;
+            std::cout << "Enter Username: ";
+            std::getline(std::cin, username);
+            std::cout << "Enter Password: ";
+            std::getline(std::cin, password);
+
+            if (authManager.loginUser(username, password)) {
+                std::cout << "Login successful!\n";
+            } else {
+                std::cout << "Login failed.\n";
+            }
+        } else if (choice == 3) {
+            break;
+        } else {
+            std::cout << "Invalid option.\n";
+        }
+    }
 
     return 0;
 }

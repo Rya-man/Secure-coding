@@ -16,3 +16,4 @@ private:
     std::string usersFilePath;
     std::string lockoutFilePath;
 };
+

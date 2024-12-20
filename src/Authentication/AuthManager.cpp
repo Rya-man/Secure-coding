@@ -37,13 +37,10 @@ bool AuthManager::loginUser(const std::string &username, const std::string &pass
 
     std::string computedHash = hasher.hashPassword(userIt->second.getSalt(), password);
     if (computedHash == userIt->second.getHashedPassword()) {
-        // Reset attempt count
         m_lockoutData[username] = UserLockData(0,0,0);
         fileManager.saveLockoutData(m_lockoutData);
-        std::cout << "Login successful!\n";
         return true;
     } else {
-        std::cerr << "Invalid username or password.\n";
         handleFailedAttempt(username);
         return false;
     }
@@ -63,6 +60,6 @@ void AuthManager::handleFailedAttempt(const std::string &username) {
 bool AuthManager::isLockedOut(const std::string &username) {
     auto it = m_lockoutData.find(username);
     if (it == m_lockoutData.end()) return false;
-    std::time_t current = TimeUtils::getCurrentTime();
-    return current < it->second.lockoutUntilTimestamp;
+    return TimeUtils::getCurrentTime() < it->second.lockoutUntilTimestamp;
 }
+
