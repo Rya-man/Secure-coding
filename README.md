@@ -128,6 +128,12 @@ SecureAuth/
 ├── README.md            # Project documentation
 ├── SecureAuthCPP          # Precompiled executable (optional)
 ├── src/                 # Source code directory
+│   ├── Authentication/  # Modules for Authentication services
+│   ├── Config/          # Config Files
+│   ├── FileIO/          # Data Manipulation and access
+│   ├── Hashing/         # Hashing and salting module (SHA256)
+│   ├── Models/          # User definition
+│   ├── Utils/           # Logging information
 │   ├── main.cpp         # Main program entry point
 ├── build/               # Directory for build artifacts
 ```
