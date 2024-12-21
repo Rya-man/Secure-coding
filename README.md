@@ -102,7 +102,7 @@ cd ../
 
 1. **Run the Application**:
    ```bash
-   ./SecureAuth
+   ./SecureAuthCPP
    ```
 
 2. **Enter a Password**:
